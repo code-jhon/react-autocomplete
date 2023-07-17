@@ -20,11 +20,20 @@ const Autocomplete: React.FC<Props> = ({ options }) => {
 
   return (
     <div className='autocomplete'>
-      <input onChange={handleChange} value={input} />
+      <input onChange={handleChange} value={input} placeholder='Type your search here...' />
 
-      <ul className='autocomplete__options'>
-        <li className='autocomplete__options__option'>prueba </li>
-      </ul>
+      {input && filteredOptions.length > 0 && ( 
+          <div className='autocomplete__options'>
+            {
+              filteredOptions.map((option, i) => (
+                <div className='option' key={i}>
+                  {option}
+                </div>
+              ))
+            }
+          </div>
+        )        
+      }
     </div>
   )
 }
