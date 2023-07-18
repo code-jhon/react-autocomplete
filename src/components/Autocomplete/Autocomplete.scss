@@ -23,6 +23,11 @@
       padding: 8px;
       cursor: pointer;
       text-align: left;
+
+      .highlight {
+        background-color: yellow;
+        font-weight: bold;
+      }
       
 
       &:hover {
