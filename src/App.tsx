@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Autocomplete } from './components';
 import useMovieAPI from './services/hooks/useMovieAPI';
 import './App.scss';
@@ -14,18 +14,18 @@ function App() {
     const filteredOptions = options.filter(
       option => option.toLowerCase().indexOf(input.toLowerCase()) > -1
     );
+    
     setInput(input);
     setFilteredOptions(filteredOptions);
   };
 
   return (
     <div className='container'>
-      <input onChange={handleChange} value={input} placeholder='Type your search here...' />
       { isLoading && <div>Loading...</div> }
       { isError && <div>Something went wrong...</div> }
-      { !isLoading && !isError && filteredOptions.length === 0 && <div>No results found...</div> }
+      <div className='logo'>Movies</div>
+      <input onChange={handleChange} value={input} placeholder='Type your search here...' />
       { !isLoading && !isError && filteredOptions.length > 0 && <Autocomplete options={filteredOptions} input={input} />}
-      
     </div>
   )
 }
