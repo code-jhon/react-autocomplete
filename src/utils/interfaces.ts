@@ -28,5 +28,6 @@ export interface Result {
 }
 
 export interface AutocompleteProps {
-  options: string[]
+  options: string[];
+  input: string;
 }

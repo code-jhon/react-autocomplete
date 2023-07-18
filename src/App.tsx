@@ -1,13 +1,27 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Autocomplete } from './components';
-import './App.css';
+import useMovieAPI from './services/hooks/useMovieAPI';
+import './App.scss';
 
 function App() {
-  const options = ['apple', 'banana', 'orange', 'pear', 'pineapple'];
+  const [input, setInput] = React.useState<string>('');
+  const [filteredOptions, setFilteredOptions] = React.useState<string[]>([]);
+  const { movies, isLoading, isError } = useMovieAPI(input);
+  const options = movies.map(movie => movie.title);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const input = e.currentTarget.value;
+    const filteredOptions = options.filter(
+      option => option.toLowerCase().indexOf(input.toLowerCase()) > -1
+    );
+    setInput(input);
+    setFilteredOptions(filteredOptions);
+  };
 
   return (
     <>
-      <Autocomplete options={options} />
+      <input onChange={handleChange} value={input} placeholder='Type your search here...' />
+      <Autocomplete options={filteredOptions} input={input} />
     </>
   )
 }
