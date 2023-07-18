@@ -1,0 +1,29 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80vw;
+
+  .logo {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 2rem;
+    height: 100px;
+    font-size: 88px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  input {
+    padding: 8px;
+    width: 100%;
+  }
+}
