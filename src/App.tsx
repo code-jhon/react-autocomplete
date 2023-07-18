@@ -19,10 +19,14 @@ function App() {
   };
 
   return (
-    <>
+    <div className='container'>
       <input onChange={handleChange} value={input} placeholder='Type your search here...' />
-      <Autocomplete options={filteredOptions} input={input} />
-    </>
+      { isLoading && <div>Loading...</div> }
+      { isError && <div>Something went wrong...</div> }
+      { !isLoading && !isError && filteredOptions.length === 0 && <div>No results found...</div> }
+      { !isLoading && !isError && filteredOptions.length > 0 && <Autocomplete options={filteredOptions} input={input} />}
+      
+    </div>
   )
 }
 

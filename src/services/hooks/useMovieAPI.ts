@@ -10,7 +10,7 @@ const useMovieAPI = (search: string) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
 
-  //const VITE_API_KEY = import.meta.env.VITE_API_KEY;
+  const VITE_API_KEY = import.meta.env.VITE_API_KEY;
   const VITE_API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const useMovieAPI = (search: string) => {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NWY0M2QxMzA0YWM4ODEzZGNlN2U2YTI3MTlmZjBkNiIsInN1YiI6IjU4Mzc1ZDg0YzNhMzY4MzZhZTAxNjY5MiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.nClHeasTxKIF-IODetTQ9p2yNdqH0CAunWSjIA_-r3s`
+        Authorization: `Bearer ${VITE_API_KEY}`
       }
     };
     const fetchMovies = async () => {
